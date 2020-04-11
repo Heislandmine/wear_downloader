@@ -34,12 +34,3 @@ def get_url_from_coordinate(base_url: str, url: str) -> list:
     content_url = [base_url + element for element in content_url]
 
     return content_url
-
-
-if __name__ == "__main__":
-
-    base_url = "https://wear.jp"
-    ret = get_url_from_coordinate(base_url, "https://wear.jp/mmngo/")
-    for url in ret:
-        image_url = get_image_url(url)
-        save_image(image_url)
