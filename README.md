@@ -20,7 +20,13 @@
 
 # 使い方
 ```
-python3 download_from_wear.py <url>
+python3 wear_downloader.py <url>
+```
+
+コーディネートページから一括してダウンロード
+
+```
+python3 wear_downloader.py <url> -c
 ```
 画像はカレントディレクトリに保存されます。
 
