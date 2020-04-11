@@ -21,6 +21,7 @@ def save_image(url: str) -> None:
     img.save(file_name)
 
 
+# コーディネートページから個別ページのurlを取得
 def get_url_from_coordinate(base_url: str, url: str) -> list:
     response = requests.get(url).content
     html = bs4.BeautifulSoup(response, "html.parser")
