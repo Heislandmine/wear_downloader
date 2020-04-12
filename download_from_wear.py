@@ -34,3 +34,20 @@ def get_url_from_coordinate(base_url: str, url: str) -> list:
     content_url = [base_url + element for element in content_url]
 
     return content_url
+
+
+# コーディネートページからページのurlを抽出
+def get_page_urls(base_url: str, target_url: str) -> list:
+    page_urls = []
+    page_urls.append(target_url)
+    response = requests.get(target_url).content
+    html = bs4.BeautifulSoup(response, "html.parser")
+    elements = [x for x in html.find("div", id="pager").find_all("a")]
+    for element in elements:
+        page_urls.append(base_url + element.get("href"))
+
+    return list(set(page_urls))  # 重複削除のために一度setに変換
+
+
+if __name__ == "__main__":
+    print(get_page_urls("https://wear.jp", "https://wear.jp/amnono/"))
